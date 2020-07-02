@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+          <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Django Weather App</title>
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            /*font-family: "Bitstream Vera Sans Mono", Monaco, "Courier New", Courier, monospace;*/
+        }
+
+        #main {
+            text-align: center;
+            padding-top: 100px;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+        }
+
+        /*input[type='text'] {
+            width: 40%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 2px solid black;
+        }
+
+        input[type='submit'] {
+            width: 30%;
+            padding: 5px;
+            background: black;
+            color: white;
+            text-transform: uppercase;
+        }*/
+        form {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body style="background-color: aliceblue;">
+<div id="main">
+    <h1>Find the Weather</h1>
+    <form method="GET">
+        <div>
+            <label for="city"></label>
+            <!-- <input type="text" id="city" value="{{ request.GET.city }}" placeholder="City..." name="city"/> -->
+            <!-- <center> -->
+                <input style="width: 50%; margin: auto;" class="form-control" type="text" id="city" placeholder="City name..." name="city" required/>
+            <!-- </center> -->
+        </div><br>
+        <input class="btn btn-success" type="submit" style="cursor: pointer;" value="Search"/>
+    </form>
+    <!-- <center> -->
+        <div class="card" style="width: 18rem; margin:auto;">
+            {% if result %}
+                <img src="{{ result.icon }}" class="card-img-top" alt="Icon" style="width: 100px; margin: auto;" />
+
+                <div class="card-body">
+                    <h3>{{ result.region }}</h3>
+                    <h3>{{ result.dayhour }}</h3>
+                    <h3>{{ result.temp_now }}° C</h3>
+                    <h3>{{ result.weather_now }}</h3>
+                </div>
+            {% endif %}
+        </div>
+    <!-- </center> -->
+    <br><br>
+</div>
+</body>
+</html>
